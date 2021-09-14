@@ -1,0 +1,44 @@
+<div ng-if="scoring.doWeHaveAWinner()==''">
+    <div class="card card-body mb-1">
+        <div class="row heading">
+            <div class="col-4 text-center">
+                I<br> {{iTotal}}
+            </div>
+            <div class="col-4 text-center">
+                <button type="button" class="btn btn-primary mb-1 mx-auto playing-card" data-toggle="modal"
+                    data-target="#scoreModal">
+                    {{scoring.getRoundChar()}}
+                </button>
+            </div>
+            <div class="col-4 text-center">
+                S<br> {{sTotal}}
+            </div>
+        </div>
+    </div>
+
+    <div class="card card-body bottom">
+        <div class="row border-bottom" ng-repeat="x in [].constructor(scoring.getRound()) track by $index">
+            <div class="col-4 p-0 text-center">{{scoring.getScore('i', $index)}}</div>
+            <div class="col-4 p-0 text-center text-nowrap">
+                {{scoring.rounds[$index]}}
+                <i class="fa fa-minus text-danger pl-3" ng-show="scoring.showMinus($index)"
+                    ng-click="scoring.removeScore($index)"></i>
+            </div>
+            <div class="col-4 p-0 text-center">{{scoring.getScore('s', $index)}}</div>
+        </div>
+    </div>
+</div>
+
+<div class="winner pyro" ng-if="scoring.doWeHaveAWinner()!=''">
+    <div class="before"></div>
+    <div class="card card-body text-center">
+        <h1>{{scoring.doWeHaveAWinner()}}</h1>
+        <h1 class="mb-5">wins!</h1>
+
+        <div class="mb-1">I scored {{iTotal}}</div>
+        <div class="mb-5">S scored {{sTotal}}</div>
+
+        <button type="button" class="btn btn-danger mb-1 mx-auto" ng-click="scoring.clearScores()">Reset</button>
+    </div>
+    <div class="after"></div>
+</div>

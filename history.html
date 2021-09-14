@@ -1,0 +1,56 @@
+<div class="card card-body mb-1">
+    <div ng-repeat="round in scoring.getHistory() track by $index">
+        <div class="row historyRow border-bottom">
+            <div class="col-6">
+                {{scoring.toDate(round.date)}}</div>
+            <div class="col-4 text-center">
+                <span class="text-primary">{{scoring.whoWon(round)}}</span> won
+            </div>
+            <div class="col-2 text-right">
+                <i class="fa fa-plus text-danger pl-3 align-middle" data-toggle="collapse"
+                    data-target="#details{{$index}}"></i>
+            </div>
+        </div>
+        <div class="row collapse mini" id="details{{$index}}">
+            <div class=" col-6">
+                <div class="row border-bottom">
+                    <div class="col-4 p-0 text-center bg-light">I</div>
+                    <div class="col-4 p-0 text-center bg-light"></div>
+                    <div class="col-4 p-0 text-center bg-light">S</div>
+                </div>
+                <div class="short-container">
+                    <div class="row border-bottom" ng-repeat="idx in [].constructor(13) track by $index">
+                        <div class="col-4 p-0 text-center">{{round.iScores[$index]}}</div>
+                        <div class="col-4 p-0 text-center text-nowrap">
+                            {{scoring.rounds[$index]}}
+                        </div>
+                        <div class="col-4 p-0 text-center">{{round.sScores[$index]}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row tight border-bottom">
+                    <div class="col-6 bg-light"><b>Stats</b></div>
+                    <div class="col-3 text-center bg-light"><b>I</b></div>
+                    <div class="col-3 text-center bg-light"><b>S</b></div>
+                </div>
+                <div class="row tight border-bottom">
+                    <div class="col-6">Totals</div>
+                    <div class="col-3 text-center">{{scoring.getITotal(round)}}</div>
+                    <div class="col-3 text-center">{{scoring.getSTotal(round)}}</div>
+                </div>
+                <div class="row tight border-bottom">
+                    <div class="col-6">Wins/loses</div>
+                    <div class="col-3 text-center text-nowrap">{{round.iWins}}/{{(round.iRound-round.iWins)}}</div>
+                    <div class="col-3 text-center text-nowrap">{{round.sWins}}/{{(round.sRound-round.sWins)}}</div>
+                </div>
+                <div class="row tight border-bottom">
+                    <div class="col-6">Average</div>
+                    <div class="col-3 text-center text-nowrap">{{Math.floor(round.iTotal/(round.iRound-round.iWins))}}
+                    </div>
+                    <div class="col-3 text-center text-nowrap">{{Math.floor(round.sTotal/(round.sRound-round.sWins))}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

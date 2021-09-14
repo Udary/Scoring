@@ -37,3 +37,37 @@ body {
     right: 5px;
     font-size: 2rem;
 }
+
+.rounded {
+    border-radius: .25rem;
+}
+
+.historyRow:last {
+    border-bottom: 0 !important;
+}
+
+.historyRow>i {
+    line-height: inherit;
+}
+
+.mini {
+    font-size: 0.65rem;
+}
+
+.stat-header {
+    font-size: 1rem;
+}
+
+.tight>div {
+    padding: 0 5px;
+}
+
+.short-container {
+    height: 100px;
+    overflow-y: scroll;
+    margin: 0 -15px;
+}
+
+.short-container .row {
+    margin: 0;
+}
