@@ -2,16 +2,15 @@
     <div class="card card-body mb-1">
         <div class="row heading">
             <div class="col-4 text-center">
-                I<br> {{iTotal}}
+                I<br /> {{iTotal}}
             </div>
             <div class="col-4 text-center">
-                <button type="button" class="btn btn-primary mb-1 mx-auto playing-card" data-toggle="modal"
-                    data-target="#scoreModal">
+                <button type="button" class="btn btn-primary mb-1 mx-auto playing-card" data-toggle="modal" data-target="#scoreModal">
                     {{scoring.getRoundChar()}}
                 </button>
             </div>
             <div class="col-4 text-center">
-                S<br> {{sTotal}}
+                S<br /> {{sTotal}}
             </div>
         </div>
     </div>
@@ -21,8 +20,7 @@
             <div class="col-4 p-0 text-center">{{scoring.getScore('i', $index)}}</div>
             <div class="col-4 p-0 text-center text-nowrap">
                 <span ng-show="!scoring.showMinus($index)">{{scoring.rounds[$index]}}</span>
-                <span class="text-danger" ng-show="scoring.showMinus($index)"
-                    ng-click="scoring.removeScore($index)">{{scoring.rounds[$index]}}</span>
+                <span class="text-danger" ng-show="scoring.showMinus($index)" ng-click="scoring.removeScore($index)">{{scoring.rounds[$index]}}</span>
             </div>
             <div class="col-4 p-0 text-center">{{scoring.getScore('s', $index)}}</div>
         </div>

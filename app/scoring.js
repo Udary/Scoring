@@ -23,7 +23,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
         $scope.Math = window.Math;
         $scope.roundCount = 13;
 
-        scoring.version =  "1.1";     
+        scoring.version = "1.1";
         scoring.rounds = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
         scoring.init = function () {
