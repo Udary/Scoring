@@ -36,8 +36,8 @@
                 </div>
                 <div class="row tight border-bottom">
                     <div class="col-6">Totals</div>
-                    <div class="col-3 text-center">{{scoring.getITotal(round)}}</div>
-                    <div class="col-3 text-center">{{scoring.getSTotal(round)}}</div>
+                    <div class="col-3 text-center">{{scoring.getIRoundTotal(round)}}</div>
+                    <div class="col-3 text-center">{{scoring.getSRoundTotal(round)}}</div>
                 </div>
                 <div class="row tight border-bottom">
                     <div class="col-6">Wins/loses</div>
@@ -49,6 +49,12 @@
                     <div class="col-3 text-center text-nowrap">{{Math.floor(round.iTotal/(round.iRound-round.iWins))}}
                     </div>
                     <div class="col-3 text-center text-nowrap">{{Math.floor(round.sTotal/(round.sRound-round.sWins))}}
+                    </div>
+                </div>
+                <div class="row text-center mt-1">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-sm btn-danger"
+                            ng-click="scoring.removeHistory($index)">Remove</button>
                     </div>
                 </div>
             </div>

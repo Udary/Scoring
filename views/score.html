@@ -20,9 +20,9 @@
         <div class="row border-bottom" ng-repeat="x in [].constructor(scoring.getRound()) track by $index">
             <div class="col-4 p-0 text-center">{{scoring.getScore('i', $index)}}</div>
             <div class="col-4 p-0 text-center text-nowrap">
-                {{scoring.rounds[$index]}}
-                <i class="fa fa-minus text-danger pl-3" ng-show="scoring.showMinus($index)"
-                    ng-click="scoring.removeScore($index)"></i>
+                <span ng-show="!scoring.showMinus($index)">{{scoring.rounds[$index]}}</span>
+                <span class="text-danger" ng-show="scoring.showMinus($index)"
+                    ng-click="scoring.removeScore($index)">{{scoring.rounds[$index]}}</span>
             </div>
             <div class="col-4 p-0 text-center">{{scoring.getScore('s', $index)}}</div>
         </div>
