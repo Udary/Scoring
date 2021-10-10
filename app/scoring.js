@@ -37,7 +37,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
             if (window.location.host == 'localhost')
                 $scope.roundCount = 3;
 
-            getTotals();
+            scoring.getTotals();
         }
 
         scoring.doWeHaveAWinner = function () {
@@ -65,7 +65,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
             $localStorage.iScores = [];
             $localStorage.sScores = [];
             $localStorage.winner = "";
-            getTotals();
+            scoring.getTotals();
         }
 
         scoring.saveScore = function () {
@@ -79,9 +79,9 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
             $scope.sScore = "";
             $scope.iScore = "";
 
-            getTotals();
+            scoring.getTotals();
 
-            if ($localStorage.round >= $scope.roundCount) { // should be 13
+            if ($localStorage.round >= $scope.roundCount) {
                 scoring.saveHistory();
                 scoring.declareWinner();
             }
@@ -91,7 +91,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
             $localStorage.iScores[index] = "";
             $localStorage.sScores[index] = "";
             $localStorage.round = index--;
-            getTotals();
+            scoring.getTotals();
         }
 
         scoring.saveHistory = function () {
@@ -230,7 +230,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
             }
         }
 
-        getTotals = function () {
+        scoring.getTotals = function () {
             scoring.getITotal();
             scoring.getSTotal();
         }

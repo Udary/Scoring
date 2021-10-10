@@ -1,11 +1,11 @@
 <div class="card card-body mb-1">
     <div ng-repeat="round in scoring.getHistory() track by $index">
         <div class="row historyRow border-bottom">
-            <div class="col-6">
+            <div class="col">
                 {{scoring.toDate(round.date)}}
             </div>
-            <div class="col-4 text-center">
-                <span class="text-primary">{{scoring.whoWon(round)}}</span> won
+            <div class="col text-center">
+                <span class="text-primary">{{scoring.whoWon(round)}} </span> won by <span class="smaller">{{Math.abs(scoring.getIRoundTotal(round) - scoring.getSRoundTotal(round))}}</span>
             </div>
             <div class="col-2 text-right">
                 <i class="fa fa-plus text-danger pl-3 align-middle" data-toggle="collapse" data-target="#details{{$index}}"></i>
