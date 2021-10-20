@@ -18,11 +18,11 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
     .controller('ScoringController', function ($location, $route, $scope, $localStorage) {
         var scoring = this;
 
-        $scope.iTotal = 0;
-        $scope.sTotal = 0;
         $scope.Math = window.Math;
-        $scope.roundCount = 13;
 
+        scoring.iTotal = 0;
+        scoring.sTotal = 0;
+        scoring.roundCount = 13;
         scoring.version = "1.2";
         scoring.rounds = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
@@ -35,7 +35,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
             }
 
             if (window.location.host == 'localhost')
-                $scope.roundCount = 3;
+                scoring.roundCount = 3;
 
             scoring.getTotals();
         }
@@ -81,7 +81,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
 
             scoring.getTotals();
 
-            if ($localStorage.round >= $scope.roundCount) {
+            if ($localStorage.round >= scoring.roundCount) {
                 scoring.saveHistory();
                 scoring.declareWinner();
             }
@@ -109,7 +109,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
         }
 
         scoring.declareWinner = function () {
-            $localStorage.winner = $scope.iTotal < $scope.sTotal ? "I" : "S";
+            $localStorage.winner = scoring.iTotal < scoring.sTotal ? "I" : "S";
         }
 
         scoring.showMinus = function (index) {
@@ -134,7 +134,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
                         total += parseInt(score);
                 });
             }
-            $scope.iTotal = total;
+            scoring.iTotal = total;
         }
 
         scoring.getSTotal = function () {
@@ -145,7 +145,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
                         total += parseInt(score);
                 });
             }
-            $scope.sTotal = total;
+            scoring.sTotal = total;
         }
 
         scoring.whoWon = function (obj) {
