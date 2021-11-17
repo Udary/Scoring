@@ -23,7 +23,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
         scoring.iTotal = 0;
         scoring.sTotal = 0;
         scoring.roundCount = 13;
-        scoring.version = "1.2";
+        scoring.version = "1.4";
         scoring.rounds = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
         scoring.init = function () {
@@ -49,6 +49,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
         }
 
         scoring.getHistory = function () {
+            $localStorage.history.sort(doSort("date"));
             return $localStorage.history;
         }
 
@@ -198,6 +199,17 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
             let year = formattedDate.getFullYear();
 
             return `${day} ${monthName} ${year}`;
+        }
+
+        doSort = function (prop) {
+            return function (a, b) {
+                if (a[prop] > b[prop]) {
+                    return -1;
+                } else if (a[prop] < b[prop]) {
+                    return 1;
+                }
+                return 0;
+            }
         }
 
         processRound = function (round) {

@@ -1,7 +1,16 @@
 body {
     font-size: 24px;
     background-color: #000000;
-    height: 95vh;
+}
+
+.flex-container, body, html {
+    height: 100%;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
 }
 
 .playing-card {
@@ -28,7 +37,6 @@ body {
 
 .bottom {
     overflow-y: scroll;
-    height: 62vh;
 }
 
 .resetscores {
@@ -52,6 +60,10 @@ body {
 
 .mini {
     font-size: 0.65rem;
+}
+
+.mid {
+    font-size: 0.85rem;
 }
 
 .stat-header {

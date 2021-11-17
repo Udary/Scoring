@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/ngstorage@0.3.11/ngStorage.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/831c51a170.css">
-    <link rel="stylesheet" href="assets/scoring.css">
+    <link rel="stylesheet" href="assets/scoring.css?v=1.4">
     <link rel="stylesheet" href="assets/firework.css">
 
     <script src="assets/js/bs-toggle.js"></script>
@@ -24,9 +24,9 @@
 </head>
 
 <body>
-    <div class="container" ng-controller="ScoringController as scoring">
+    <div class="container flex-container" ng-controller="ScoringController as scoring">
         <base href="/scoring/">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded mb-1">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded mb-1 flex-grow-0">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -46,9 +46,7 @@
             </div>
         </nav>
 
-        <div ng-view></div>
-
-        {{scoring.getRoute()}}
+        <div class="flex-grow-1" ng-view></div>
 
     </div>
 </body>

@@ -1,5 +1,5 @@
-<div ng-if="scoring.doWeHaveAWinner()==''">
-    <div class="card card-body mb-1">
+<div class="flex-container" ng-if="scoring.doWeHaveAWinner()==''">
+    <div class="card card-body mb-1 flex-grow-0">
         <div class="row heading">
             <div class="col-4 text-center">
                 I<br /> {{scoring.iTotal}}
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="card card-body bottom">
+    <div class="card card-body bottom flex-grow-1">
         <div class="row border-bottom" ng-repeat="x in [].constructor(scoring.getRound()) track by $index">
             <div class="col-4 p-0 text-center">{{scoring.getScore('i', $index)}}</div>
             <div class="col-4 p-0 text-center text-nowrap">
