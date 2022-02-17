@@ -11,6 +11,16 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
                     templateUrl: 'views/history.html',
                     controller: 'ScoringController',
                     controllerAs: 'scoring'
+                })
+                .when('/import', {
+                    templateUrl: 'views/import.html',
+                    controller: 'ScoringController',
+                    controllerAs: 'scoring'
+                })
+                .when('/export', {
+                    templateUrl: 'views/export.html',
+                    controller: 'ScoringController',
+                    controllerAs: 'scoring'
                 });
 
             $locationProvider.html5Mode(true);
@@ -25,6 +35,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
         scoring.roundCount = 13;
         scoring.version = "1.4";
         scoring.rounds = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+        scoring.importData = [];
 
         scoring.init = function () {
             if (!$localStorage.iScores || !$localStorage.sScores || !$localStorage.round)
@@ -199,6 +210,18 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
             let year = formattedDate.getFullYear();
 
             return `${day} ${monthName} ${year}`;
+        }
+
+        scoring.import = function () {
+            scoring.importData = $.parseJSON('[' + $scope.importText + ']');
+        }
+
+        scoring.importConfirmed = function () {
+            $localStorage.history = this.importData[0];
+        }
+
+        scoring.export = function () {
+            $scope.exportText = JSON.stringify($localStorage.history);
         }
 
         doSort = function (prop) {
