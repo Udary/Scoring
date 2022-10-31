@@ -1,16 +1,16 @@
 <div class="flex-container" ng-if="scoring.doWeHaveAWinner()==''">
     <div class="card card-body mb-1 flex-grow-0">
         <div class="row heading">
-            <div class="col-4 text-center">
-                I<br /> {{scoring.iTotal}}
+            <div class="col-4 text-center finger" ng-click="scoring.setDealer(0);" ng-class="{'text-danger':scoring.getDealer==0}">
+                <span class="nametag" ng-class="{'dealer':scoring.getDealer()==0}">I</span><br /> {{scoring.iTotal}}
             </div>
             <div class="col-4 text-center">
                 <button type="button" class="btn btn-primary mb-1 mx-auto playing-card" data-toggle="modal" data-target="#scoreModal">
                     {{scoring.getRoundChar()}}
                 </button>
             </div>
-            <div class="col-4 text-center">
-                S<br /> {{scoring.sTotal}}
+            <div class="col-4 text-center finger" ng-click="scoring.setDealer(1);">
+                <span class="nametag" ng-class="{'dealer':scoring.getDealer()==1}">S</span><br /> {{scoring.sTotal}}
             </div>
         </div>
     </div>

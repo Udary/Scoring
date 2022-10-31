@@ -25,7 +25,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
 
             $locationProvider.html5Mode(true);
         }])
-    .controller('ScoringController', function ($location, $route, $scope, $localStorage) {
+    .controller('ScoringController', function ($location, $scope, $localStorage) {
         var scoring = this;
 
         $scope.Math = window.Math;
@@ -33,7 +33,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
         scoring.iTotal = 0;
         scoring.sTotal = 0;
         scoring.roundCount = 13;
-        scoring.version = "1.4";
+        scoring.version = "1.5";
         scoring.rounds = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
         scoring.importData = [];
 
@@ -80,6 +80,14 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
             scoring.getTotals();
         }
 
+        scoring.setDealer = function (dealer) {
+            $localStorage.dealer = dealer;
+        }
+
+        scoring.getDealer = function () {
+            return $localStorage.dealer;
+        }
+
         scoring.saveScore = function () {
             $localStorage.iScores[$localStorage.round] = ($scope.iScore) ? parseInt($scope.iScore) : 0;
             $localStorage.sScores[$localStorage.round] = ($scope.sScore) ? parseInt($scope.sScore) : 0;
@@ -109,6 +117,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
         scoring.saveHistory = function () {
             var newScore = {
                 date: Date.now(),
+                dealer: $localStorage.dealer,
                 iScores: $localStorage.iScores,
                 sScores: $localStorage.sScores
             };
@@ -250,7 +259,7 @@ angular.module('scoringApp', ['ngRoute', 'ngStorage'])
                 round.iTotal = iScore;
                 round.iRound = iRound;
             }
-            if (round.iScores) {
+            if (round.sScores) {
                 var sWins = 0;
                 var sScore = 0;
                 var sRound = 0;

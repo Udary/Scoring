@@ -75,11 +75,22 @@ body {
 }
 
 .short-container {
-    height: 100px;
+    height: 150px;
     overflow-y: scroll;
     margin: 0 -15px;
 }
 
 .short-container .row {
     margin: 0;
+}
+
+.nametag{
+    border: 3px black solid;
+    border-radius: 4px;
+    padding: 4px 12px 6px 12px;
+}
+
+.dealer{
+    background-color: red;
+    color: white;
 }
