@@ -84,13 +84,14 @@ body {
     margin: 0;
 }
 
-.nametag{
-    border: 3px black solid;
-    border-radius: 4px;
+.nametag {
     padding: 4px 12px 6px 12px;
 }
 
-.dealer{
-    background-color: red;
-    color: white;
+.dealer-pill-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    vertical-align: top;
 }
